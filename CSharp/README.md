@@ -2,16 +2,18 @@
 
 > Enjoy the following C# 7 and C# 8 samples
 
-* Literals
-* Tuples
-* Out Vars and Ref Returns
-* Expression Bodied Members
-* Pattern Matching
+* Literals (C# 7)
+* Tuples (C# 7)
+* Out Vars and Ref Returns (C# 7)
+* Expression Bodied Members (C# 7)
+* Pattern Matching (C# 7)
 * Non-Nullable Reference Types (C# 8)
 * Pattern matching extended (C# 8)
 * Indexes and Ranges (C# 8)
 * Async Streams (C# 8)
 * Using Declaration (C# 8)
+* Explicit Interface Implementation
+* Select Expression (C# 8)
 
 ## Binary Literals
 
@@ -92,3 +94,25 @@ Folder: UsingDeclarationSample
 C# 8 gives a simple syntax to dispose resources - the *using declaration*.
 
 See the blog article [Using, using, using with C# 8](https://csharp.christiannagel.com/2019/04/09/using/) for more information.
+
+## Explicit Interface Implementation
+
+Folder: ExplicitInterfaceImplementationSample
+
+How and why to use explicit interface implementation with C#.
+
+See the blog article [Explicit Interface Implementation with C#](https://csharp.christiannagel.com/2019/04/16/explicit-interface-implementation-with-c/) for more information.
+
+## Switch Expression
+
+Folder: SelectExpressionSample
+
+Transferring from the *select statement* to *select expressions*.
+
+See the blog article [Moving from the switch statement to switch expressions (C# 8)](https://csharp.christiannagel.com/2019/08/14/moving-from-the-switch-statement-to-switch-expressions-c-8/) for more information.
+
+Folder: SwitchStateSample
+
+Using the *switch expression* with tuples and pattern matching.
+
+See the blog article [Changing State with the Switch Expression (C# 8)](https://csharp.christiannagel.com/2019/09/03/swtichexpression/) for more information.
