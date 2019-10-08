@@ -1,12 +1,16 @@
 ﻿using ASPNETCore21Authentication.Data;
+using ASPNETCore21Authentication.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 using System.Threading.Tasks;
 
 namespace ASPNETCore21Authentication
@@ -30,6 +34,25 @@ namespace ASPNETCore21Authentication
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //Add MailKit
+            services.AddMailKit(optionBuilder =>
+            {
+                optionBuilder.UseMailKit(new MailKitOptions()
+                {
+                    //get options from sercets.json
+                    Server = "localhost",
+                    Port = 25,
+                    SenderName = "Wagner Xu",
+                    SenderEmail = "wagnerhsu@qq.com",
+
+                    // can be optional with no authentication 
+                    Account = "admin@meehealth.com",
+                    Password = "123456",
+                    // enable ssl or tls
+                    Security = false
+                },ServiceLifetime.Singleton);
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -44,7 +67,6 @@ namespace ASPNETCore21Authentication
             })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
